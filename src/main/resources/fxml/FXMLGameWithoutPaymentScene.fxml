@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="430.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.FXMLGameWithoutPaymentSceneController">
+   <children>
+      <Label layoutX="21.0" layoutY="49.0" text="Gra przeciwko:">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="playersComboBox" layoutX="222.0" layoutY="53.0" onAction="#isBadValue" prefHeight="35.0" prefWidth="188.0" promptText="Graczowi" />
+      <Label layoutX="21.0" layoutY="92.0" text="Ilość rund:">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="roundsNumber" alignment="CENTER_RIGHT" layoutX="222.0" layoutY="96.0" onKeyReleased="#isBadText" prefHeight="35.0" prefWidth="188.0" text="3" />
+      <Button fx:id="playBtn" layoutX="115.0" layoutY="223.0" mnemonicParsing="false" onAction="#playBtnClick" prefHeight="35.0" prefWidth="188.0" text="Graj!" />
+      <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToPreviousSceneAction" text="&lt;&lt;Wstecz" />
+   </children>
+</AnchorPane>
