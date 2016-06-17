@@ -13,18 +13,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import main.MainApp;
+import model.games.DeerHuntingGameEngine;
+import model.games.GameEngine;
+import model.games.HeadAndTailsGameEngine;
+import model.games.RockPaperScisorsGameEngine;
 import model.players.Player;
 import model.players.PlayerSimpleFactory;
 import model.players.playerDecorator.AIPlayerDecorator;
@@ -36,12 +34,14 @@ import model.players.playerDecorator.RealPlayerDecorator;
  *
  * @author Maciek
  */
-public class FXMLGameWithPaymentSceneController implements Initializable {
+public class FXMLGameInitController implements Initializable {
 
     private Player player;
     private PlayerDecorator[] players;
     private String gameName;
     private TextField[] allTextFields;
+    private boolean wageSystem;
+    private SetScene setter;
     
     @FXML
     private Label nameLabel;
@@ -69,20 +69,7 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-
-    void initData(String gameName, Player player) {
-        this.player = player;
-        this.gameName = gameName;
-        
-        nameLabel.setText(this.player.getName());
-        
-        ObservableList<String> players =
-                FXCollections.observableArrayList(
-                        "Gracza Komputerowego",
-                        "Drugiego Gracza"
-                );
-        playersComboBox.setItems(players);
+        setter = new SetScene();
         
         allTextFields = new TextField[]{ 
             firstPlayerCash, 
@@ -93,6 +80,22 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
             secondPlayerPenalty
         };
         
+        ObservableList<String> players =
+                FXCollections.observableArrayList(
+                        "Gracz Komputerowy",
+                        "Drugi gracz"
+                );
+        playersComboBox.setItems(players);
+    }    
+
+    public void initData(String gameName, Player player, boolean wageSystem) {
+        this.player = player;
+        this.gameName = gameName;
+        this.wageSystem = wageSystem;
+        
+        if(wageSystem){
+            nameLabel.setText(this.player.getName());
+        }
         canExecute();
     }
     
@@ -108,8 +111,7 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
     
     @FXML
     private void goToPreviousSceneAction(ActionEvent event) throws IOException{
-        SetScene setter = new SetScene();
-        setter.previousScene("/fxml/FXMLMainScene.fxml", event);
+        setter.goToScene("/fxml/FXMLMainScene.fxml", event);
     }
     
     @FXML
@@ -131,10 +133,12 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
         String tmpText;
         boolean error = false;
         
-        for (int i = 0; i < allTextFields.length; i++) {
-            tmpText = allTextFields[i].getText();
-            if(!tmpText.matches("[-+]?[0-9]+")){
-                error = true;
+        if (wageSystem) {
+            for (int i = 0; i < allTextFields.length; i++) {
+                tmpText = allTextFields[i].getText();
+                if(!tmpText.matches("[-+]?[0-9]+")){
+                    error = true;
+                }
             }
         }
         
@@ -153,12 +157,12 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
     private void playersInit() {
         PlayerSimpleFactory factory = new PlayerSimpleFactory();
         
-        boolean condition = ((String)playersComboBox.getValue())
+        boolean computerPlayer = ((String)playersComboBox.getValue())
                 .equals("Gracza Komputerowego");
         
         Player tmpPlayer = null;
         
-        if (condition) {
+        if (computerPlayer) {
             tmpPlayer = factory.createPlayer(-1);
             tmpPlayer.setName("Gracz Komputerowy");
             players[1] = new AIPlayerDecorator(tmpPlayer);
@@ -166,9 +170,44 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
         else{
             tmpPlayer = factory.createPlayer(-2);
             tmpPlayer.setName("Drugi Gracz");
-            players[1] = new RealPlayerDecorator(factory.createPlayer(-2));
+            players[1] = new RealPlayerDecorator(tmpPlayer);
         }
         
+        if (wageSystem) {
+            initWageSystem();
+        }
+        else{
+            standardWageSystem();
+        }
+    }
+
+    private void goToNextScene(ActionEvent event) throws IOException {
+        
+        GameEngine gameEngine = null;
+        String path = null;
+        int tmpRoundsNumber = Integer.valueOf(roundsNumber.getText());
+        
+        if (gameName.equals("Gra w wybieranie monety")) {
+            gameEngine = new HeadAndTailsGameEngine();
+            path = "/fxml/FXMLHeadAndTailsScene.fxml";
+        }
+        else if (gameName.equals("Kamień, papier, nożyce")){
+            gameEngine = new RockPaperScisorsGameEngine();
+            path = "/fxml/FXMLRockPaperScissors.fxml";
+        }
+        else if (gameName.equals("Gra w jelenie")){
+            gameEngine = new DeerHuntingGameEngine();
+            path = "/fxml/FXMLDeerHuntingScene.fxml";
+        }
+        
+        setter.goToGameScene(path, 
+                    event, 
+                    players, 
+                    tmpRoundsNumber, 
+                    gameEngine);
+    }
+
+    private void initWageSystem() {
         int[] tmpValues = new int[6];
         
         for (int i = 0; i < allTextFields.length; i++) {
@@ -182,51 +221,13 @@ public class FXMLGameWithPaymentSceneController implements Initializable {
         }
     }
 
-    private void goToNextScene(ActionEvent event) throws IOException {
-        if (gameName.equals("Gra w wybieranie monety")) {
-            goToHeadAndTails(event);
+    private void standardWageSystem() {
+        for (int i = 0, j = 0; i < players.length; i++) {
+            players[i].setCash(0);
+            players[i].setPrize(0);
+            players[i].setPenalty(0);
         }
-        else{
-            goToRockPaperScissors(event);
-        }
     }
-
-    private void goToHeadAndTails(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(
-            getClass().getResource(
-                "/fxml/FXMLHeadAndTailsScene.fxml"
-            )
-        );
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(
-                new Scene((Pane)loader.load())
-        );
-
-        FXMLHeadAndTailsSceneController controller = 
-                loader.<FXMLHeadAndTailsSceneController>getController();
-        controller.initData(players, roundsNumber);
         
-        stage.show();
-    }
-
-    private void goToRockPaperScissors(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(
-            getClass().getResource(
-                "/fxml/FXMLRockPaperScissors.fxml"
-            )
-        );
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(
-                new Scene((Pane)loader.load())
-        );
-
-        FXMLRockPaperScissorsController controller = 
-                loader.<FXMLRockPaperScissorsController>getController();
-        controller.initData(players, roundsNumber);
-        
-        stage.show();
-    }
     
 }

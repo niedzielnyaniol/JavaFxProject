@@ -24,24 +24,27 @@ public class CountdownTimer {
     }
     
     public void start(final Label clockLabel){
-        mainTime = 5;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(mainTime >= 0){
-                            clockLabel.setText(
-                                StringHelper.clockFormat(mainTime--));
+        if (timer != null) {
+            mainTime = 5;
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(mainTime >= 0){
+                                clockLabel.setText(
+                                    StringHelper.clockFormat(mainTime--));
+                            }
+                            else{
+                                clockLabel.setText("Koniec");
+                                stop();
+                            }
                         }
-                        else{
-                            clockLabel.setText("Koniec");
-                        }
-                    }
-                });
-            }
-        }, 0, 1000);
+                    });
+                }
+            }, 0, 1000);
+        }
     }
     
     public void reset(){
@@ -49,6 +52,7 @@ public class CountdownTimer {
         timer = null;
         timer = new Timer();
     }
+    
     
     public void stop(){
         timer.cancel();

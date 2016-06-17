@@ -5,7 +5,6 @@
  */
 package model.games;
 
-import model.players.Player;
 import model.players.playerDecorator.PlayerDecorator;
 
 /**
@@ -14,17 +13,33 @@ import model.players.playerDecorator.PlayerDecorator;
  */
 public class Winner {
     
-    public static String getWinner(PlayerDecorator player1, 
-            PlayerDecorator player2){
-        if (player1.getCash() > player2.getCash()) {
-            return player1.getName();
-        }
-        else if (player1.getCash() < player2.getCash()) {
-            return player2.getName();
+    public static String getWinner(PlayerDecorator[] players){
+        
+        int winner = 0;
+        int looser = 1;
+        StringBuilder returnString = new StringBuilder();
+        returnString.append("---------------------------\n");
+        
+        if (players[0].getCash() == players[1].getCash()){
+            returnString.append("Remis\n");
         }
         else{
-            return "Remis";
+            if (players[0].getCash() > players[1].getCash()) {
+                winner = 0;
+                looser = 1;
+            }
+            
+            returnString.append("Grę wygrał ")
+                    .append(players[winner].getName())
+                    .append("\n")
+                    .append(players[winner].winReaction())
+                    .append("\n")
+                    .append(players[looser].defeatReaction())
+                    .append("\n")
+                    .append("---------------------------");
         }
+        
+        return returnString.toString();
     }
     
 }

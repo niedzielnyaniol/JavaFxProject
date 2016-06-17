@@ -42,4 +42,8 @@ public class MainTimer {
         timer.cancel();
         timer = null;
     }
+    
+    public int getTime(){
+        return mainTime;
+    }
 }

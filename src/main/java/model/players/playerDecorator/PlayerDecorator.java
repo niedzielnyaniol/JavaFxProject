@@ -25,6 +25,10 @@ public abstract class PlayerDecorator extends Player{
         return choice;
     }
     
+    public void setChoice(int choice) {
+        this.choice = choice;
+    }
+    
     public String winReaction() {
         return player.winReaction();
     }
