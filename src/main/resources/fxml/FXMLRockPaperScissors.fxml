@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLRockPaperScissorsController">
-    
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLGameController">
+   <children>
+      <Label fx:id="clockLabel" layoutX="344.0" layoutY="14.0" text="00:00">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="startButton" layoutX="168.0" layoutY="24.0" mnemonicParsing="false" onAction="#startAction" prefHeight="45.0" prefWidth="114.0" text="Start" />
+      <Label layoutX="138.0" layoutY="78.0" text="Runda: ">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="roundsLabel" layoutX="235.0" layoutY="78.0" text="1/99">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="5.0" layoutY="128.0" prefHeight="155.0" prefWidth="430.0">
+         <children>
+            <Label fx:id="firstPlayerLabel" text="firstPlayer" GridPane.halignment="CENTER" />
+            <Label fx:id="secondPlayerLabel" text="secPlayer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="firstPlayerBtn1" mnemonicParsing="false" onAction="#player1Btn1Action" prefHeight="40.0" prefWidth="215.0" text="Kamień" GridPane.rowIndex="1" />
+            <Button fx:id="secondPlayerBtn1" mnemonicParsing="false" onAction="#player2Btn1Action" prefHeight="40.0" prefWidth="215.0" text="Kamień" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="firstPlayerBtn2" mnemonicParsing="false" onAction="#player1Btn2Action" prefHeight="40.0" prefWidth="215.0" text="Papier" GridPane.rowIndex="2" />
+            <Button fx:id="secondPlayerBtn2" mnemonicParsing="false" onAction="#player2Btn2Action" prefHeight="40.0" prefWidth="215.0" text="Papier" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="firstPlayerClock" text="00:05" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label fx:id="secondPlayerClock" text="00:05" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="firstPlayerBtn3" mnemonicParsing="false" onAction="#player1Btn3Action" prefHeight="40.0" prefWidth="215.0" text="Nożyce" GridPane.rowIndex="3" />
+            <Button fx:id="secondPlayerBtn3" mnemonicParsing="false" onAction="#player2Btn3Action" prefHeight="40.0" prefWidth="215.0" text="Nożyce" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
 </AnchorPane>

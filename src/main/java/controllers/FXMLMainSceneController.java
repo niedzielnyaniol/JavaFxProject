@@ -7,23 +7,18 @@ package controllers;
 
 import helpers.AvalibleGamesHelper;
 import helpers.StringHelper;
-import controllers.FXMLGameWithPaymentSceneController;
+import helpers.SetScene;
 import java.io.IOException;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import model.players.Player;
 import model.players.PlayerSimpleFactory;
 
@@ -90,11 +85,34 @@ public class FXMLMainSceneController implements Initializable {
     
     @FXML
     private void goToNextSceneAction(ActionEvent event) throws IOException{
+
         PlayerSimpleFactory factory = new PlayerSimpleFactory();
         player = factory.createPlayer(radioButtonSelectedNumber);
         player.setName(nameTextField.getText());
         
-        goToNextScene((String)gamesComboBox.getValue(), event);
+        SetScene setter = new SetScene();
+        String path = null;
+        boolean wageSystem = false;
+        
+        String gameName = String.valueOf(gamesComboBox.getValue());
+        
+        boolean game1 = gameName.equals("Gra w wybieranie monety");
+        boolean game2 = gameName.equals("Kamień, papier, nożyce");
+        boolean game3 = gameName.equals("Gra w jelenie");
+        
+        if (game1 || game2) {
+            path = "/fxml/FXMLGameWithPaymentScene.fxml";
+            wageSystem = true;
+        }
+        else if (game3) {
+            path = "/fxml/FXMLGameWithoutPaymentScene.fxml";
+            wageSystem = false;
+        }
+        setter.goToGameInitScene(path, 
+                    event, 
+                    gameName, 
+                    player, 
+                    wageSystem);
     }
     
     private void canExecute(){
@@ -109,58 +127,4 @@ public class FXMLMainSceneController implements Initializable {
             nextBtn.setDisable(true);
         }
     }
-
-    private void goToNextScene(String gameName, ActionEvent event) 
-            throws IOException 
-    {
-        boolean game1 = gameName.equals("Gra w wybieranie monety");
-        boolean game2 = gameName.equals("Kamień, papier, nożyce");
-        boolean game3 = gameName.equals("Gra w jelenie");
-        
-        if (game1 || game2) {
-            gameWithWageSystem(gameName, event);
-        }
-        else if (game3) {
-            gameWithoutWageSystem(gameName, event);
-        }
-    }
-
-    private void gameWithWageSystem(String gameName, ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(
-            getClass().getResource(
-                "/fxml/FXMLGameWithPaymentScene.fxml"
-            )
-        );
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(
-                new Scene((Pane)loader.load())
-        );
-
-        FXMLGameWithPaymentSceneController controller = 
-                loader.<FXMLGameWithPaymentSceneController>getController();
-        controller.initData(gameName, player);
-        
-        stage.show();
-    }
-
-    private void gameWithoutWageSystem(String gameName, ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(
-            getClass().getResource(
-                "/fxml/FXMLGameWithoutPaymentScene.fxml"
-            )
-        );
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(
-                new Scene((Pane)loader.load())
-        );
-
-        FXMLGameWithoutPaymentSceneController controller = 
-                loader.<FXMLGameWithoutPaymentSceneController>getController();
-        controller.initData(gameName, player);
-        
-        stage.show();
-    }
-    
 }

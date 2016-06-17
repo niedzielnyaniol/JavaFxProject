@@ -5,6 +5,8 @@
  */
 package helpers;
 
+import model.players.playerDecorator.PlayerDecorator;
+
 /**
  *
  * @author Maciek
@@ -37,6 +39,14 @@ public class StringHelper {
         }
         
         return minutes + ":" + seconds;
+    }
+    
+    public static String accountState(PlayerDecorator[] players){
+            return "\nStan konta gracza " 
+                + ": " + players[0].getCash()
+                + "\nStan konta gracza " 
+                + players[1].getName() 
+                + ": " + players[1].getCash();
     }
     
     private static boolean isWhitespace(String s) {
