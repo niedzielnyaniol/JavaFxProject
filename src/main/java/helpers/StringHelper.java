@@ -5,7 +5,7 @@
  */
 package helpers;
 
-import model.players.playerDecorator.PlayerDecorator;
+import model.players.playerDecoratorForThreeGames.PlayerDecorator;
 
 /**
  *

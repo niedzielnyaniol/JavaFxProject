@@ -8,6 +8,7 @@ package helpers;
 import controllers.FXMLGameController;
 import controllers.FXMLGameEndingController;
 import controllers.FXMLGameInitController;
+import controllers.FXMLTicTacToeSceneController;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.games.GameEngine;
+import model.threeGames.GameEngine;
 import model.players.Player;
-import model.players.playerDecorator.PlayerDecorator;
+import model.players.playerDecoratorForThreeGames.PlayerDecorator;
 
 /**
  *
@@ -95,6 +96,22 @@ public class SetScene {
         FXMLGameEndingController controller = 
                 loader.<FXMLGameEndingController>getController();
         controller.initData(gameHistory);
+        
+        stage.show();
+    }
+    
+    public void goToTicTacToe(ActionEvent event, Player player) throws IOException{
+        FXMLLoader loader = new FXMLLoader(
+            getClass().getResource("/fxml/FXMLTicTacToeScene.fxml"));
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(
+                new Scene((Pane)loader.load())
+        );
+
+        FXMLTicTacToeSceneController controller = 
+                loader.<FXMLTicTacToeSceneController>getController();
+        controller.initData(player);
         
         stage.show();
     }

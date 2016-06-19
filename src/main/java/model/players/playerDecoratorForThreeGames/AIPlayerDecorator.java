@@ -1,4 +1,4 @@
-package model.players.playerDecorator;
+package model.players.playerDecoratorForThreeGames;
 
 import java.util.Random;
 import model.players.Player;

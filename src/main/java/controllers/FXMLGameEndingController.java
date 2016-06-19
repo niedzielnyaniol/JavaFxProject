@@ -20,19 +20,11 @@ import javafx.scene.control.TextArea;
  *
  * @author Maciek
  */
-public class FXMLGameEndingController implements Initializable {
+public class FXMLGameEndingController {
 
     @FXML
     private TextArea gameHistoryArea;
-    
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
     public void initData (String gameHistory){
         gameHistoryArea.setText(gameHistory);
     }

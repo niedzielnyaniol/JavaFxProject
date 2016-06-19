@@ -103,16 +103,27 @@ public class FXMLMainSceneController implements Initializable {
         if (game1 || game2) {
             path = "/fxml/FXMLGameWithPaymentScene.fxml";
             wageSystem = true;
-        }
-        else if (game3) {
-            path = "/fxml/FXMLGameWithoutPaymentScene.fxml";
-            wageSystem = false;
-        }
-        setter.goToGameInitScene(path, 
+            
+            setter.goToGameInitScene(path, 
                     event, 
                     gameName, 
                     player, 
                     wageSystem);
+        }
+        else if (game3) {
+            path = "/fxml/FXMLGameWithoutPaymentScene.fxml";
+            wageSystem = false;
+            
+            setter.goToGameInitScene(path, 
+                    event, 
+                    gameName, 
+                    player, 
+                    wageSystem);
+        }
+        else { //Tic Tac Toe
+            setter.goToTicTacToe(event, player);
+        }
+        
     }
     
     private void canExecute(){

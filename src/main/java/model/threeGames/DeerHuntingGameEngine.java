@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.games;
+package model.threeGames;
 
 import helpers.StringHelper;
-import model.players.playerDecorator.PlayerDecorator;
+import model.players.playerDecoratorForThreeGames.PlayerDecorator;
 
 /**
  *

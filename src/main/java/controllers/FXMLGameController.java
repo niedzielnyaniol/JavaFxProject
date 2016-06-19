@@ -5,7 +5,6 @@
  */
 package controllers;
 
-import com.sun.xml.internal.ws.message.StringHeader;
 import helpers.CountdownTimer;
 import helpers.GameHistoryMaker;
 import helpers.MainTimer;
@@ -21,11 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import model.games.GameEngine;
-import model.games.Winner;
-import model.players.playerDecorator.AIPlayerDecorator;
-import model.players.playerDecorator.PlayerDecorator;
-import model.players.playerDecorator.RealPlayerDecorator;
+import model.threeGames.GameEngine;
+import model.threeGames.Winner;
+import model.players.playerDecoratorForThreeGames.AIPlayerDecorator;
+import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
 
 /**
  * FXML Controller class
@@ -48,36 +47,21 @@ public class FXMLGameController implements Initializable {
     private GameHistoryMaker gameHistory;
     private Random rand;
     
-    @FXML
-    private Label firstPlayerLabel;
-    @FXML
-    private Label secondPlayerLabel;
-    @FXML
-    private Label roundsLabel;
-    @FXML
-    private Label firstPlayerClock;
-    @FXML
-    private Label secondPlayerClock;
-    @FXML
-    private Label clockLabel;
-    @FXML
-    private Button firstPlayerBtn1;
-    @FXML
-    private Button firstPlayerBtn2;
-    @FXML
-    private Button firstPlayerBtn3;
-    @FXML
-    private Button secondPlayerBtn1;
-    @FXML
-    private Button secondPlayerBtn2;
-    @FXML
-    private Button secondPlayerBtn3;
-    @FXML
-    private Button startButton;
+    @FXML Label firstPlayerLabel;
+    @FXML Label secondPlayerLabel;
+    @FXML Label roundsLabel;
+    @FXML Label firstPlayerClock;
+    @FXML Label secondPlayerClock;
+    @FXML Label clockLabel;
+    @FXML Button firstPlayerBtn1;
+    @FXML Button firstPlayerBtn2;
+    @FXML Button firstPlayerBtn3;
+    @FXML Button secondPlayerBtn1;
+    @FXML Button secondPlayerBtn2;
+    @FXML Button secondPlayerBtn3;
+    @FXML Button startButton;
     
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         firstPlayerControlls = new Control[]{
@@ -174,8 +158,6 @@ public class FXMLGameController implements Initializable {
     private void player2Btn3Action(ActionEvent event) throws IOException{
         setChoice(event, 1, 2);
     }
-    
-    @FXML
 
     private void updateRoundLabel(int currentRound) {
         if (currentRound > numberOfRounds) {

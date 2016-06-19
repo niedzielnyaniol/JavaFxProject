@@ -19,15 +19,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import model.games.DeerHuntingGameEngine;
-import model.games.GameEngine;
-import model.games.HeadAndTailsGameEngine;
-import model.games.RockPaperScisorsGameEngine;
+import model.threeGames.DeerHuntingGameEngine;
+import model.threeGames.GameEngine;
+import model.threeGames.HeadAndTailsGameEngine;
+import model.threeGames.RockPaperScisorsGameEngine;
 import model.players.Player;
 import model.players.PlayerSimpleFactory;
-import model.players.playerDecorator.AIPlayerDecorator;
-import model.players.playerDecorator.PlayerDecorator;
-import model.players.playerDecorator.RealPlayerDecorator;
+import model.players.playerDecoratorForThreeGames.AIPlayerDecorator;
+import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
 
 /**
  * FXML Controller class
@@ -43,26 +43,16 @@ public class FXMLGameInitController implements Initializable {
     private boolean wageSystem;
     private SetScene setter;
     
-    @FXML
-    private Label nameLabel;
-    @FXML
-    private ComboBox playersComboBox;
-    @FXML
-    private TextField firstPlayerCash;
-    @FXML
-    private TextField firstPlayerPrize;
-    @FXML
-    private TextField firstPlayerPenalty;
-    @FXML
-    private TextField secondPlayerCash;
-    @FXML
-    private TextField secondPlayerPrize;
-    @FXML
-    private TextField secondPlayerPenalty;
-    @FXML
-    private TextField roundsNumber;
-    @FXML
-    private Button playBtn;
+    @FXML Label nameLabel;
+    @FXML ComboBox playersComboBox;
+    @FXML TextField firstPlayerCash;
+    @FXML TextField firstPlayerPrize;
+    @FXML TextField firstPlayerPenalty;
+    @FXML TextField secondPlayerCash;
+    @FXML TextField secondPlayerPrize;
+    @FXML TextField secondPlayerPenalty;
+    @FXML TextField roundsNumber;
+    @FXML Button playBtn;
             
     /**
      * Initializes the controller class.
@@ -228,6 +218,4 @@ public class FXMLGameInitController implements Initializable {
             players[i].setPenalty(0);
         }
     }
-        
-    
 }

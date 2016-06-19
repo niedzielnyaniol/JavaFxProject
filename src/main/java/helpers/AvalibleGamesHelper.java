@@ -17,7 +17,8 @@ public class AvalibleGamesHelper {
     public static ObservableList<String> forPreschooler(){
         ObservableList<String> games =
                 FXCollections.observableArrayList(
-                        "Gra w wybieranie monety"
+                        "Gra w wybieranie monety",
+                        "Kółko i krzyżyk"
                 );
         return games;
     }
@@ -26,7 +27,8 @@ public class AvalibleGamesHelper {
         ObservableList<String> games =
                 FXCollections.observableArrayList(
                         "Gra w wybieranie monety",
-                        "Kamień, papier, nożyce"
+                        "Kamień, papier, nożyce",
+                        "Kółko i krzyżyk"
                 );
         return games;
     }
@@ -36,7 +38,8 @@ public class AvalibleGamesHelper {
                 FXCollections.observableArrayList(
                         "Gra w wybieranie monety",
                         "Kamień, papier, nożyce",
-                        "Gra w jelenie"
+                        "Gra w jelenie",
+                        "Kółko i krzyżyk"
                 );
         return games;
     }
