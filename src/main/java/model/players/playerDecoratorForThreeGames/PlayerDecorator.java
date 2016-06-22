@@ -8,7 +8,7 @@ import model.players.Player;
  *
  * @author Maciek
  */
-public abstract class PlayerDecorator extends Player{
+public abstract class PlayerDecorator{
 
     protected Player player;
     protected int cash;
@@ -16,7 +16,6 @@ public abstract class PlayerDecorator extends Player{
     protected int penalty;
     protected int choice;
 
-    @Override
     public String getName(){
         return player.getName();
     }

@@ -29,12 +29,15 @@ import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
 /**
  * FXML Controller class
  *
+ * using Design Pattern called Strategy:
+ * GameEngine is a interface
+ * 
  * @author Maciek
  */
 public class FXMLGameController implements Initializable {
 
     private PlayerDecorator[] players;
-    private GameEngine gameEngine; 
+    private GameEngine gameEngine;  //strategy intefrace
     
     private Control[] firstPlayerControlls;
     private Control[] secondPlayerControlls;

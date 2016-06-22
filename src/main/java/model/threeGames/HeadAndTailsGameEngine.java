@@ -40,10 +40,10 @@ public class HeadAndTailsGameEngine implements GameEngine{
         
         switch (player.getChoice()) {
             case 0:
-                returnString.append(" Orła");
+                returnString.append("Orła");
                 break;
             case 1:
-                returnString.append(" Reszkę");
+                returnString.append("Reszkę");
                 break;
         }
         
