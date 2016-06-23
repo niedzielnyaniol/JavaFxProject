@@ -6,7 +6,7 @@
 package model.threeGames;
 
 import helpers.StringHelper;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -33,7 +33,7 @@ public class DeerHuntingGameEngine implements GameEngine{
 
 
     @Override
-    public String check(PlayerDecorator[] players) {
+    public String check(PlayerAdapter[] players) {
         StringBuilder returnString = new StringBuilder();
             
         int player1prize = player1Matrix[players[0].getChoice()]
@@ -56,7 +56,7 @@ public class DeerHuntingGameEngine implements GameEngine{
     }
 //"Gracz " + players[1].getName() + " wybrał orła"
     @Override
-    public String valueConvert(PlayerDecorator player) {
+    public String valueConvert(PlayerAdapter player) {
         StringBuilder returnString = new StringBuilder();
         
         returnString.append("Gracz ")

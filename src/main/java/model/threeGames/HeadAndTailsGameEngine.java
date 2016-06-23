@@ -6,7 +6,7 @@
 package model.threeGames;
 
 import helpers.StringHelper;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -14,7 +14,7 @@ import model.players.playerDecoratorForThreeGames.PlayerDecorator;
  */
 public class HeadAndTailsGameEngine implements GameEngine{
     
-    public String check(PlayerDecorator[] players) {
+    public String check(PlayerAdapter[] players) {
         int winner = 1;
         int looser = 0;
         
@@ -31,7 +31,7 @@ public class HeadAndTailsGameEngine implements GameEngine{
     }
     
     @Override
-    public String valueConvert(PlayerDecorator player) {
+    public String valueConvert(PlayerAdapter player) {
         StringBuilder returnString = new StringBuilder();
         
         returnString.append("Gracz ")

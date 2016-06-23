@@ -6,7 +6,7 @@
 package model.threeGames;
 
 import model.players.Player;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -14,8 +14,8 @@ import model.players.playerDecoratorForThreeGames.PlayerDecorator;
  */
 public interface GameEngine {
 
-    public String check(PlayerDecorator[] players);
-    public String valueConvert(PlayerDecorator player);
+    public String check(PlayerAdapter[] players);
+    public String valueConvert(PlayerAdapter player);
     public int getNumberOfChoicePossibilities();
     
 }

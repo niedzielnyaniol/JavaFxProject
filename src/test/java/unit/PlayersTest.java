@@ -12,9 +12,9 @@ import model.players.PlayerSimpleFactory;
 import model.players.Preschooler;
 import model.players.SecondPlayer;
 import model.players.Student;
-import model.players.playerDecoratorForThreeGames.AIPlayerDecorator;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
-import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
+import model.players.playerAdapterForThreeGames.AIPlayerAdapter;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
+import model.players.playerAdapterForThreeGames.RealPlayerAdapter;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -46,16 +46,16 @@ public class PlayersTest {
     public void playerDecoratorTest(){
         PlayerSimpleFactory factory = new PlayerSimpleFactory();
         
-        PlayerDecorator AIPlayer = new AIPlayerDecorator(
+        PlayerAdapter AIPlayer = new AIPlayerAdapter(
                 factory.createPlayer(1)
         );
         
-        PlayerDecorator RealPlayer = new RealPlayerDecorator(
+        PlayerAdapter RealPlayer = new RealPlayerAdapter(
                 factory.createPlayer(1)
         );
         
         Assert.assertNotEquals(AIPlayer.getClass(), Player.class);
         Assert.assertNotEquals(RealPlayer.getClass(), Player.class);
-        Assert.assertTrue(AIPlayer instanceof PlayerDecorator);
+        Assert.assertTrue(AIPlayer instanceof PlayerAdapter);
     }
 }

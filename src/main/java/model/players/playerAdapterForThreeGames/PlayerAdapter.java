@@ -1,4 +1,4 @@
-package model.players.playerDecoratorForThreeGames;
+package model.players.playerAdapterForThreeGames;
 
 import model.players.Player;
 
@@ -8,7 +8,7 @@ import model.players.Player;
  *
  * @author Maciek
  */
-public abstract class PlayerDecorator{
+public abstract class PlayerAdapter{
 
     protected Player player;
     protected int cash;

@@ -5,7 +5,7 @@
  */
 package helpers;
 
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -41,7 +41,7 @@ public class StringHelper {
         return minutes + ":" + seconds;
     }
     
-    public static String accountState(PlayerDecorator[] players){
+    public static String accountState(PlayerAdapter[] players){
             return "\nStan konta gracza " 
                 + ": " + players[0].getCash()
                 + "\nStan konta gracza " 

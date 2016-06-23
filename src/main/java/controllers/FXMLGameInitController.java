@@ -25,9 +25,9 @@ import model.threeGames.HeadAndTailsGameEngine;
 import model.threeGames.RockPaperScisorsGameEngine;
 import model.players.Player;
 import model.players.PlayerSimpleFactory;
-import model.players.playerDecoratorForThreeGames.AIPlayerDecorator;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
-import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
+import model.players.playerAdapterForThreeGames.AIPlayerAdapter;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
+import model.players.playerAdapterForThreeGames.RealPlayerAdapter;
 
 /**
  * FXML Controller class
@@ -37,7 +37,7 @@ import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
 public class FXMLGameInitController implements Initializable {
 
     private Player player;
-    private PlayerDecorator[] players;
+    private PlayerAdapter[] players;
     private String gameName;
     private TextField[] allTextFields;
     private boolean wageSystem;
@@ -107,10 +107,10 @@ public class FXMLGameInitController implements Initializable {
     @FXML
     private void playBtnClick(ActionEvent event) throws IOException{
         
-        RealPlayerDecorator firstPlayer = new RealPlayerDecorator(player);
-        PlayerDecorator secondPlayer = null;
+        RealPlayerAdapter firstPlayer = new RealPlayerAdapter(player);
+        PlayerAdapter secondPlayer = null;
         
-        players = new PlayerDecorator[]{
+        players = new PlayerAdapter[]{
             firstPlayer,
             secondPlayer
         };
@@ -155,12 +155,12 @@ public class FXMLGameInitController implements Initializable {
         if (computerPlayer) {
             tmpPlayer = factory.createPlayer(-1);
             tmpPlayer.setName("Gracz Komputerowy");
-            players[1] = new AIPlayerDecorator(tmpPlayer);
+            players[1] = new AIPlayerAdapter(tmpPlayer);
         }
         else{
             tmpPlayer = factory.createPlayer(-2);
             tmpPlayer.setName("Drugi Gracz");
-            players[1] = new RealPlayerDecorator(tmpPlayer);
+            players[1] = new RealPlayerAdapter(tmpPlayer);
         }
         
         if (wageSystem) {

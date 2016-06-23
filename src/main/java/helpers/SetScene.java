@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.threeGames.GameEngine;
 import model.players.Player;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -40,7 +40,7 @@ public class SetScene {
     public void goToGameScene(
             String path, 
             ActionEvent event, 
-            PlayerDecorator[]players,
+            PlayerAdapter[]players,
             int roundsNumber, 
             GameEngine gameEngine) throws IOException {
         

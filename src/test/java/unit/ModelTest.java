@@ -7,13 +7,16 @@ package unit;
 
 import model.players.Player;
 import model.players.PlayerSimpleFactory;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
-import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
+import model.players.playerAdapterForThreeGames.RealPlayerAdapter;
 import model.threeGames.GameEngine;
 import model.threeGames.HeadAndTailsGameEngine;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -21,7 +24,7 @@ import org.junit.Test;
  */
 public class ModelTest {
     
-    private PlayerDecorator[] players;
+    private PlayerAdapter[] players;
     
     @Before
     public void setUp(){
@@ -31,9 +34,9 @@ public class ModelTest {
         Player player2 = factory.createPlayer(1);
         player2.setName("player2");
         
-        players = new PlayerDecorator[]{
-            new RealPlayerDecorator(player1),
-            new RealPlayerDecorator(player2)
+        players = new PlayerAdapter[]{
+            new RealPlayerAdapter(player1),
+            new RealPlayerAdapter(player2)
         };
     }
     

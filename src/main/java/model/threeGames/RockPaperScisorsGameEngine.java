@@ -6,7 +6,7 @@
 package model.threeGames;
 
 import helpers.StringHelper;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -15,7 +15,7 @@ import model.players.playerDecoratorForThreeGames.PlayerDecorator;
 public class RockPaperScisorsGameEngine implements GameEngine{
     
     @Override
-    public String check(PlayerDecorator[] players) {
+    public String check(PlayerAdapter[] players) {
         
         int winner = 0;
         int looser = 1;
@@ -50,7 +50,7 @@ public class RockPaperScisorsGameEngine implements GameEngine{
     }
 
     @Override
-    public String valueConvert(PlayerDecorator player) {
+    public String valueConvert(PlayerAdapter player) {
         StringBuilder returnString = new StringBuilder();
         
         returnString.append("Gracz ")

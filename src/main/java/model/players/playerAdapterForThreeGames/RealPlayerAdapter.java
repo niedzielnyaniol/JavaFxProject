@@ -1,4 +1,4 @@
-package model.players.playerDecoratorForThreeGames;
+package model.players.playerAdapterForThreeGames;
 
 import model.players.Player;
 
@@ -7,10 +7,10 @@ import model.players.Player;
  *
  * @author Maciek
  */
-public class RealPlayerDecorator extends PlayerDecorator{
+public class RealPlayerAdapter extends PlayerAdapter{
     
 
-    public RealPlayerDecorator(Player player){
+    public RealPlayerAdapter(Player player){
         this.player = player;
     }
     

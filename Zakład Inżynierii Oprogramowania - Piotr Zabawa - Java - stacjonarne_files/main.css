@@ -1,0 +1,428 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    color: #555;
+    font: normal 10pt Arial,Helvetica,sans-serif;
+    background: #DEF;
+}
+
+#page
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 5px;
+/*    border: 1px solid #C9E0ED;*/
+}
+
+#header
+{
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+/*    border-top: 3px solid #C9E0ED;*/
+}
+
+#content
+{
+    padding: 20px;
+}
+
+#sidebar
+{
+    padding: 20px 0 20px 20px;
+}
+
+#footer
+{
+    padding: 10px;
+    margin: 10px 20px;
+    font-size: 0.8em;
+    text-align: center;
+    border-top: 1px solid #C9E0ED;
+}
+
+#logo
+{
+    height: 80px;
+    padding: 10px 20px 10px 400px;
+    font-size: 200%;
+    overflow: hidden;
+    line-height: 80px;
+    text-align: center;
+    font-weight: bold;
+    background: #FFF url(../images/pk_logo2.png) no-repeat 10px 50%;
+    color: #06A;
+    border-bottom: 1px solid #FFF;
+}
+
+#mainmenu
+{
+    background:white url(bg.gif) repeat-x left top;
+}
+
+#mainmenu ul
+{
+    padding:6px 20px 5px 20px;
+    margin:0px;
+}
+
+#mainmenu ul li
+{
+    display: inline;
+}
+
+#mainmenu ul li a
+{
+    color:#ffffff;
+    background-color:transparent;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration:none;
+    padding:5px 8px;
+}
+
+#mainmenu ul li a:hover, #mainmenu ul li.active a
+{
+    color: #6399cd;
+    background-color:#EFF4FA;
+    text-decoration:none;
+}
+
+div.flash-error, div.flash-notice, div.flash-success
+{
+    padding:.8em;
+    margin-bottom:1em;
+    border:2px solid #ddd;
+}
+
+div.flash-error
+{
+    background:#FBE3E4;
+    color:#8a1f11;
+    border-color:#FBC2C4;
+}
+
+div.flash-notice
+{
+    background:#FFF6BF;
+    color:#514721;
+    border-color:#FFD324;
+}
+
+div.flash-success
+{
+    background:#E6EFC2;
+    color:#264409;
+    border-color:#C6D880;
+}
+
+div.flash-error a
+{
+    color:#8a1f11;
+}
+
+div.flash-notice a
+{
+    color:#514721;
+}
+
+div.flash-success a
+{
+    color:#264409;
+}
+
+div.form .rememberMe label
+{
+    display: inline;
+}
+
+div.view
+{
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #C9E0ED;
+    border-radius: 5px;
+}
+
+div.view:hover
+{
+    background-color: #DEF;
+    border: 1px solid #CDE;
+}
+
+div.breadcrumbs
+{
+    font-size: 0.9em;
+    padding: 5px 20px;
+    background: #222;
+    color: #999;
+    font-weight: bold;
+}
+
+div.breadcrumbs a {
+    color: #5BF;
+    text-decoration: none;
+}
+
+div.breadcrumbs a:hover {
+    color: #9DF;
+}
+
+div.breadcrumbs span
+{
+    color: #FFF;
+}
+
+div.search-form
+{
+    padding: 10px;
+    margin: 10px 0;
+    background: #eee;
+}
+
+/*
+ * portlet
+ */
+.portlet
+{
+
+}
+
+.portlet-decoration
+{
+    padding: 3px 8px;
+    background: #B7D6E7;
+    border-left: 5px solid #6FACCF;
+    border-radius: 5px 5px 0 0;
+}
+
+.portlet-title
+{
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    color: #298dcd;
+}
+
+.portlet-content
+{
+    font-size:0.9em;
+    margin: 0 0 15px 0;
+    padding: 5px 8px;
+    background:#EFFDFF;
+    border-radius: 0 0 5px 5px;
+}
+
+.portlet-content ul
+{
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+}
+
+.portlet-content ul ul
+{
+    margin-left: 10px;
+}
+
+.portlet-content li
+{
+    padding: 2px 0 4px 0px;
+}
+
+/*
+ * operations
+ */
+.operations
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.operations li
+{
+    padding-bottom: 2px;
+}
+
+.operations li a
+{
+    font: bold 12px Arial;
+    color: #0066A4;
+    display: block;
+    padding: 2px 0 2px 3px;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+.operations li a:visited
+{
+    color: #0066A4;
+}
+
+.operations li a:hover
+{
+    background: #80CFFF;
+}
+
+.operations li a[href="#"]
+{
+    color: #222 !important;
+    background-color: inherit !important;
+    cursor: text;
+}
+
+/*
+ * usermenu
+ */
+.usermenu .portlet-decoration
+{
+    background: #B8E834;
+    border-left: 5px solid #7FFF00;
+}
+
+.usermenu .portlet-title
+{
+    color: #555;
+}
+
+.usermenu .portlet-content
+{
+    background: #DDFF99;
+}
+
+.usermenu .operations li a
+{
+    color: #555;
+}
+
+.usermenu .operations li a:visited
+{
+    color: #555;
+}
+
+.usermenu .operations li a:hover
+{
+    background: #B8E834;
+}
+
+/*
+ * adminmenu
+ */
+.adminmenu .portlet-decoration
+{
+    background: #C00;
+    border-left: 5px solid #8B0000;
+}
+
+.adminmenu .portlet-title
+{
+    color: #FFF;
+}
+
+.adminmenu .portlet-content
+{
+    background: #FED;
+}
+
+.adminmenu .operations li a
+{
+    color: #C00;
+}
+
+.adminmenu .operations li a:visited
+{
+    color: #C00;
+}
+
+.adminmenu .operations li a:hover
+{
+    background: #FA9;
+}
+
+a.button {
+    color: #222;
+    background: #EEE;
+    text-decoration: none;
+    border: 1px solid #777;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+a.button:hover {
+    background-color: #DEF;
+    border: 1px solid #37B;
+}
+
+.operations li.create > a, .operations li.create > a:hover, #content > a.create, #content > p a.create {
+    background-image: url('../images/create.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.profile > a, .operations li.profile > a:hover {
+    background-image: url('../images/profile.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.update > a, .operations li.update > a:hover, #content > p a.update {
+    background-image: url('../images/update.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.menuitems > a, .operations li.menuitems > a:hover {
+    background-image: url('../images/menuitems.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.order > a, .operations li.order > a:hover, #content > a.order {
+    background-image: url('../images/order.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.pages > a, .operations li.pages > a:hover {
+    background-image: url('../images/pages.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+.operations li.users > a, .operations li.users > a:hover {
+    background-image: url('../images/users.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+#content p > a.delete {
+    background-image: url('../images/delete.gif');
+    background-repeat: no-repeat;
+    background-position: 3px 50%;
+    padding-left: 16px;
+}
+
+div#content > h1 {
+    color: #06A;
+}
+
+div.user_photo {
+    float: left;
+}
+div.user_photo img {
+    width: 100px;
+    height: 100px;
+    padding: 1px;
+    border: 1px solid #CCC;
+}
+div.user_info {
+    margin-left: 115px;
+}
+div.user_info h3 a {
+    color: #06A;
+}

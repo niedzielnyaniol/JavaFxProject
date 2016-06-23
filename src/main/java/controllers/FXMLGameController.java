@@ -22,9 +22,9 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import model.threeGames.GameEngine;
 import model.threeGames.Winner;
-import model.players.playerDecoratorForThreeGames.AIPlayerDecorator;
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
-import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
+import model.players.playerAdapterForThreeGames.AIPlayerAdapter;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
+import model.players.playerAdapterForThreeGames.RealPlayerAdapter;
 
 /**
  * FXML Controller class
@@ -36,7 +36,7 @@ import model.players.playerDecoratorForThreeGames.RealPlayerDecorator;
  */
 public class FXMLGameController implements Initializable {
 
-    private PlayerDecorator[] players;
+    private PlayerAdapter[] players;
     private GameEngine gameEngine;  //strategy intefrace
     
     private Control[] firstPlayerControlls;
@@ -90,7 +90,7 @@ public class FXMLGameController implements Initializable {
         disableAllBtn(true);
     }    
 
-    public void initData(PlayerDecorator[] players, int roundsNumber
+    public void initData(PlayerAdapter[] players, int roundsNumber
             , GameEngine gameEngine) {
         
         this.players = players;
@@ -121,7 +121,7 @@ public class FXMLGameController implements Initializable {
         
         runable = true;
         
-        if (players[1] instanceof AIPlayerDecorator) {
+        if (players[1] instanceof AIPlayerAdapter) {
             for (int i = 0; i < firstPlayerControlls.length; i++) {
                 firstPlayerControlls[i].setDisable(false);
                 secondPlayerControlls[i].setDisable(true);
@@ -236,7 +236,7 @@ public class FXMLGameController implements Initializable {
         setter.goToEndingScene(event, gameHistory.getGameHistory());
     }
 
-    private void checkCountDownTimer(ActionEvent event, PlayerDecorator player) throws IOException {
+    private void checkCountDownTimer(ActionEvent event, PlayerAdapter player) throws IOException {
         try{
             countdownTimer.reset();
         }catch(RuntimeException ee){
@@ -270,7 +270,7 @@ public class FXMLGameController implements Initializable {
 
     private void playerOneScenario(ActionEvent event) throws IOException {
         
-        if(players[1] instanceof RealPlayerDecorator){
+        if(players[1] instanceof RealPlayerAdapter){
             playerTurn = 0;
             
             checkCountDownTimer(event, players[0]);

@@ -5,7 +5,7 @@
  */
 package model.threeGames;
 
-import model.players.playerDecoratorForThreeGames.PlayerDecorator;
+import model.players.playerAdapterForThreeGames.PlayerAdapter;
 
 /**
  *
@@ -13,7 +13,7 @@ import model.players.playerDecoratorForThreeGames.PlayerDecorator;
  */
 public class Winner {
     
-    public static String getWinner(PlayerDecorator[] players){
+    public static String getWinner(PlayerAdapter[] players){
         
         int winner = 0;
         int looser = 1;
